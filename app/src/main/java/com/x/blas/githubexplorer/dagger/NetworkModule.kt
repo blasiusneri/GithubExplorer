@@ -6,6 +6,7 @@ import android.preference.PreferenceManager
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.x.blas.githubexplorer.sharedpreference.UserSharedPreference
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -18,12 +19,12 @@ import javax.inject.Singleton
  * Created by blasius.n.puspika on 26/09/20.
  */
 @Module
-public class NetworkModule constructor(var baseUrl: String) {
+class NetworkModule constructor(var baseUrl: String) {
 
     @Provides
     @Singleton
-    fun providesSharedPreferences(application: Application): SharedPreferences {
-        return PreferenceManager.getDefaultSharedPreferences(application)
+    fun provideUsernameSharedPreferences(application: Application): UserSharedPreference {
+        return UserSharedPreference()
     }
 
     @Provides

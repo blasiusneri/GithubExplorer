@@ -1,6 +1,5 @@
 package com.x.blas.githubexplorer.dagger
 
-import com.x.blas.githubexplorer.MainActivity
 import com.x.blas.githubexplorer.dagger.scope.UserScope
 import dagger.Component
 
@@ -11,6 +10,4 @@ import dagger.Component
 @UserScope
 @Component(dependencies = [AppComponent::class], modules = [GitHubModule::class])
 interface UserComponent {
-
-    fun inject(mainActivity: MainActivity)
 }
