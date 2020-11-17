@@ -1,19 +1,16 @@
 package com.x.blas.githubexplorer.dagger
 
-import android.app.Application
+import com.x.blas.githubexplorer.feature.search.repository.contract.GithubRepository
+import com.x.blas.githubexplorer.feature.search.repository.impl.GithubRepositoryImpl
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import javax.inject.Singleton
 
 /**
  * Created by blasius.n.puspika on 26/09/20.
  */
 @Module
-class AppModule constructor(var application: Application){
+abstract class AppModule {
 
-    @Provides
-    @Singleton
-    fun providesApplication(): Application {
-        return application
-    }
+    @Binds
+    abstract fun provideGithubRepository(githubRepository: GithubRepositoryImpl): GithubRepository
 }
