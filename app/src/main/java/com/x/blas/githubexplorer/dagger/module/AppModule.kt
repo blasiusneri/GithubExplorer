@@ -1,4 +1,4 @@
-package com.x.blas.githubexplorer.dagger
+package com.x.blas.githubexplorer.dagger.module
 
 import com.x.blas.githubexplorer.feature.search.repository.contract.GithubRepository
 import com.x.blas.githubexplorer.feature.search.repository.impl.GithubRepositoryImpl

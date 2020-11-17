@@ -1,4 +1,4 @@
-package com.x.blas.githubexplorer
+package com.x.blas.githubexplorer.utils
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

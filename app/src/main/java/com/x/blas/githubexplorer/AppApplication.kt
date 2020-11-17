@@ -1,7 +1,7 @@
 package com.x.blas.githubexplorer
 
 import androidx.multidex.MultiDexApplication
-import com.x.blas.githubexplorer.dagger.DaggerAppComponent
+import com.x.blas.githubexplorer.dagger.component.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector

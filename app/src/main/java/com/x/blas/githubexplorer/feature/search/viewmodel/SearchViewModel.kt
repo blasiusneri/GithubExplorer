@@ -17,6 +17,11 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(private val githubRepository: GithubRepository) :
     ViewModel() {
 
+    val showLoading: LiveData<Boolean>
+        get() = _showLoading
+
+    private var _showLoading = MutableLiveData<Boolean>().apply { value = false }
+
     val searchList: LiveData<SearchList>
         get() = _searchList
 
@@ -24,11 +29,14 @@ class SearchViewModel @Inject constructor(private val githubRepository: GithubRe
 
     @SuppressLint("CheckResult")
     fun fetchSearchList(keyword: String) {
+        _showLoading.value = true
         githubRepository.getSearchList(keyword).subscribeOn(Schedulers.io()).observeOn(
             AndroidSchedulers.mainThread()
         ).subscribe({
+            _showLoading.value = false
             _searchList.value = it
         },{
+            _showLoading.value = false
             Log.e("ERROR fetchSearchList", it.message)
         })
     }

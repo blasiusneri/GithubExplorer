@@ -1,9 +1,9 @@
-package com.x.blas.githubexplorer.dagger
+package com.x.blas.githubexplorer.dagger.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.x.blas.githubexplorer.AppViewModelFactory
-import com.x.blas.githubexplorer.ViewModelKey
+import com.x.blas.githubexplorer.utils.AppViewModelFactory
+import com.x.blas.githubexplorer.utils.ViewModelKey
 import com.x.blas.githubexplorer.feature.search.viewmodel.SearchViewModel
 import dagger.Binds
 import dagger.Module

@@ -1,4 +1,4 @@
-package com.x.blas.githubexplorer.dagger
+package com.x.blas.githubexplorer.dagger.module
 
 import android.app.Application
 import android.content.SharedPreferences
@@ -22,6 +22,13 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 @Module
 class NetworkModule {
+
+    private companion object {
+        const val GITHUB_URL = "https://api.github.com/"
+
+        //set github access token here
+        const val ACCESS_TOKEN = "d9b655ef677bffc1784f1ed132e28f036e67f2b8"
+    }
 
     @Provides
     @ApplicationScope
@@ -49,7 +56,7 @@ class NetworkModule {
     fun provideOkHttpClient(cache: Cache): OkHttpClient {
         val client = OkHttpClient.Builder().addInterceptor(Interceptor {
             val request = it.request().newBuilder()
-                .addHeader("Authorization", "token " + "4ac8659790ff353a83ce910833a6c99b908d94ce")
+                .addHeader("Authorization", "token $ACCESS_TOKEN")
                 .build()
             return@Interceptor it.proceed(request)
         }).cache(cache)
@@ -60,7 +67,7 @@ class NetworkModule {
     @ApplicationScope
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
+            .baseUrl(GITHUB_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

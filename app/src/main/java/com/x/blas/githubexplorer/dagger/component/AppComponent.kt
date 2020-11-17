@@ -1,7 +1,11 @@
-package com.x.blas.githubexplorer.dagger
+package com.x.blas.githubexplorer.dagger.component
 
 import android.app.Application
 import com.x.blas.githubexplorer.AppApplication
+import com.x.blas.githubexplorer.dagger.ActivityBuilder
+import com.x.blas.githubexplorer.dagger.module.AppModule
+import com.x.blas.githubexplorer.dagger.module.NetworkModule
+import com.x.blas.githubexplorer.dagger.module.ViewModelModule
 import com.x.blas.githubexplorer.dagger.scope.ApplicationScope
 import dagger.BindsInstance
 import dagger.Component

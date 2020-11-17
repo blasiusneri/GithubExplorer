@@ -1,5 +1,6 @@
 package com.x.blas.githubexplorer.dagger
 
+import com.x.blas.githubexplorer.dagger.module.AppModule
 import com.x.blas.githubexplorer.feature.search.view.SearchUserActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

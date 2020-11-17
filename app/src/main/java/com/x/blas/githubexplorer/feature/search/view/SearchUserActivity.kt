@@ -1,16 +1,18 @@
 package com.x.blas.githubexplorer.feature.search.view
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.x.blas.githubexplorer.AppViewModelFactory
 import com.x.blas.githubexplorer.databinding.ActivitySearchBinding
 import com.x.blas.githubexplorer.feature.search.adapter.SearchUserAdapter
 import com.x.blas.githubexplorer.feature.search.viewmodel.SearchViewModel
+import com.x.blas.githubexplorer.utils.AppViewModelFactory
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
@@ -33,9 +35,19 @@ class SearchUserActivity : AppCompatActivity() {
             binding.svKeyword.isIconified = false
         }
 
+        viewModel.showLoading.observe(this, Observer { values ->
+            if (values == true) {
+                binding.pbSearchUser.visibility = View.VISIBLE
+                binding.rvUserList.visibility = View.GONE
+            } else {
+                binding.pbSearchUser.visibility = View.GONE
+                binding.rvUserList.visibility = View.VISIBLE
+            }
+        })
+
         binding.svKeyword.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(keyword: String?): Boolean {
-                Toast.makeText(this@SearchUserActivity, "data fetched", Toast.LENGTH_SHORT).show()
+                hideSoftKeyboard(binding.svKeyword)
                 viewModel.fetchSearchList(keyword.orEmpty())
                 viewModel.searchList.observe(this@SearchUserActivity, Observer { value ->
                     val adapter = SearchUserAdapter(value)
@@ -48,5 +60,11 @@ class SearchUserActivity : AppCompatActivity() {
 
             override fun onQueryTextChange(keyword: String?): Boolean = false
         })
+    }
+
+    fun hideSoftKeyboard(view: View) {
+        val imm: InputMethodManager =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
