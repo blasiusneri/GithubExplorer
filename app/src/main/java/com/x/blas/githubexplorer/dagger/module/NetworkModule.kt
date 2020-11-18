@@ -27,7 +27,7 @@ class NetworkModule {
         const val GITHUB_URL = "https://api.github.com/"
 
         //set github access token here
-        const val ACCESS_TOKEN = "d9b655ef677bffc1784f1ed132e28f036e67f2b8"
+        const val ACCESS_TOKEN = "c700504c2b8afcbe28ffa3f1fd7177acaf11b116"
     }
 
     @Provides
@@ -64,7 +64,6 @@ class NetworkModule {
     }
 
     @Provides
-    @ApplicationScope
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(GITHUB_URL)
@@ -75,7 +74,6 @@ class NetworkModule {
     }
 
     @Provides
-    @ApplicationScope
     fun provideGithubService(retrofit: Retrofit): GithubService {
         return retrofit.create(GithubService::class.java)
     }
