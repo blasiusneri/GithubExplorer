@@ -43,7 +43,7 @@ dependencies {
     //MODULARIZED - 1.04 add base module to app module
     implementation project(":base")
 
-    //MODULARIZED - 1.03 Remove all dependencies that already declared in base using api only
+    //MODULARIZED - 1.03 Remove all dependencies that already declared in base using api only except annotationProcessor and kapt, make it available in both module
 
     annotationProcessor "com.google.dagger:dagger-android-processor:${rootProject.ext.google.daggerVersion}"
     annotationProcessor "com.google.dagger:dagger-compiler:${rootProject.ext.google.daggerVersion}"

@@ -11,7 +11,7 @@ import retrofit2.Retrofit
 
 //MODULARIZED - 2.03 Create new module for provide Service
 @Module
-class NetworkServiceModule {
+class GithubServiceModule {
 
     @Provides
     fun provideGithubService(retrofit: Retrofit): GithubService {

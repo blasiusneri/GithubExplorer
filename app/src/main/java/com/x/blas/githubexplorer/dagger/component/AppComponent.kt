@@ -5,7 +5,7 @@ import com.x.blas.base.component.BaseComponent
 import com.x.blas.githubexplorer.AppApplication
 import com.x.blas.githubexplorer.dagger.ActivityBuilder
 import com.x.blas.githubexplorer.dagger.module.AppModule
-import com.x.blas.githubexplorer.dagger.module.NetworkServiceModule
+import com.x.blas.githubexplorer.dagger.module.GithubServiceModule
 import com.x.blas.githubexplorer.dagger.module.ViewModelModule
 import com.x.blas.githubexplorer.dagger.scope.ApplicationScope
 import dagger.BindsInstance
@@ -19,7 +19,7 @@ import dagger.android.AndroidInjector
  */
 @ApplicationScope
 @Component(
-    modules = [AndroidInjectionModule::class, ActivityBuilder::class, ViewModelModule::class, AppModule::class, NetworkServiceModule::class],
+    modules = [AndroidInjectionModule::class, ActivityBuilder::class, ViewModelModule::class, AppModule::class, GithubServiceModule::class],
     dependencies = [BaseComponent::class]
 )
 interface AppComponent : AndroidInjector<AppApplication> {
