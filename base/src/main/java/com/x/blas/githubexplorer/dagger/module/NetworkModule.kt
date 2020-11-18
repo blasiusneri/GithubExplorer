@@ -6,8 +6,7 @@ import android.preference.PreferenceManager
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.x.blas.githubexplorer.dagger.scope.ApplicationScope
-import com.x.blas.githubexplorer.service.GithubService
+import com.x.blas.base.scope.BaseScope
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -21,6 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  * Created by blasius.n.puspika on 26/09/20.
  */
 @Module
+//MODULARIZED - 2.02 Move NetworkModule to base but keep the GithubService Provider in app module, so create NetworkServiceModule.kt for GithubService Provider
 class NetworkModule {
 
     private companion object {
@@ -31,20 +31,20 @@ class NetworkModule {
     }
 
     @Provides
-    @ApplicationScope
+    @BaseScope
     fun providesSharedPreferences(application: Application): SharedPreferences {
         return PreferenceManager.getDefaultSharedPreferences(application)
     }
 
     @Provides
-    @ApplicationScope
+    @BaseScope
     fun provideOkHttpCache(application: Application): Cache {
         val cacheSize = 10 * 1024 * 1024
         return Cache(application.cacheDir, cacheSize.toLong())
     }
 
     @Provides
-    @ApplicationScope
+    @BaseScope
     fun provideGson(): Gson {
         val gsonBuilder = GsonBuilder()
         gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
@@ -52,7 +52,7 @@ class NetworkModule {
     }
 
     @Provides
-    @ApplicationScope
+    @BaseScope
     fun provideOkHttpClient(cache: Cache): OkHttpClient {
         val client = OkHttpClient.Builder().addInterceptor(Interceptor {
             val request = it.request().newBuilder()
@@ -64,7 +64,6 @@ class NetworkModule {
     }
 
     @Provides
-    @ApplicationScope
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(GITHUB_URL)
@@ -73,11 +72,4 @@ class NetworkModule {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
     }
-
-    @Provides
-    @ApplicationScope
-    fun provideGithubService(retrofit: Retrofit): GithubService {
-        return retrofit.create(GithubService::class.java)
-    }
-
 }

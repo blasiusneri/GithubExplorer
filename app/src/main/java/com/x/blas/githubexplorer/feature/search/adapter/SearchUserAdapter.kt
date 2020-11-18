@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.x.blas.githubexplorer.R
 import com.x.blas.githubexplorer.feature.search.model.SearchList
-import com.x.blas.githubexplorer.library.imagehelper.ImageLoader
 
 /**
  * Created by blasius.n.puspika on 16/11/20.
@@ -23,16 +22,16 @@ class SearchUserAdapter(private val dataSet: SearchList) :
         LayoutInflater.from(parent.context).inflate(R.layout.item_search_user, parent, false)
     )
 
-    override fun getItemCount(): Int = dataSet.items.size
+    override fun getItemCount(): Int = dataSet.items?.size ?: 0
 
     override fun onBindViewHolder(holder: SearchUserAdapter.ViewHolder, position: Int) {
-        holder.tvUser.text = dataSet.items[position].login
-        holder.tvUrl.text = dataSet.items[position].url
+        /*holder.tvUser.text = dataSet.items[position]?.login
+        holder.tvUrl.text = dataSet.items[position]?.url
         ImageLoader.loadWith(
             holder.ivAvatar.context,
             dataSet.items[position].avatar_url,
             holder.ivAvatar
-        )
+        )*/
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
