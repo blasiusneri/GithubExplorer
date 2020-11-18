@@ -14,10 +14,12 @@ import retrofit2.Retrofit
  */
 
 @BaseScope
+//MODULARIZED - 2.06 set NetworkModule as module used in BaseComponent
 @Component(modules = [NetworkModule::class])
+//MODULARIZED - 2.02 Create BaseComponent
 interface BaseComponent : AndroidInjector<BaseApplication> {
 
-    //MODULARIZED - 2.04 Create builder for BaseComponent
+    //MODULARIZED - 2.05 Create builder for BaseComponent
     @Component.Builder
     interface Builder {
         @BindsInstance
@@ -25,6 +27,6 @@ interface BaseComponent : AndroidInjector<BaseApplication> {
         fun build(): BaseComponent
     }
 
-    //MODULARIZED - 2.05 Exposed Retrofit to be used in service
+    //MODULARIZED - 2.07 Exposed Retrofit to be used in service
     fun retrofit(): Retrofit
 }

@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  * Created by blasius.n.puspika on 26/09/20.
  */
 @Module
-//MODULARIZED - 2.02 Move NetworkModule to base but keep the GithubService Provider in app module, so create new GithubServiceModule.kt for GithubService Provider
+//MODULARIZED - 2.03 Move NetworkModule to base but keep the GithubService Provider in app module, so create new GithubServiceModule.kt for GithubService Provider
 class NetworkModule {
 
     private companion object {

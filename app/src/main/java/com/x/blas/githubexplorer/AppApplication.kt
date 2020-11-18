@@ -17,6 +17,7 @@ class AppApplication : BaseApplication(), HasAndroidInjector {
 
     override fun onCreate() {
         super.onCreate()
+        //MODULARIZED - 2.12 add baseComponent and passing baseComponent from parent class
         val appApplication = DaggerAppComponent.builder().applicationContext(this).baseComponent(
             baseComponent
         ).build()

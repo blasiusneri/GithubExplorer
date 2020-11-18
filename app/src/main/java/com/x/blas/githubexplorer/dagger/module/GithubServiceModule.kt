@@ -9,7 +9,7 @@ import retrofit2.Retrofit
  * Created by blasius.n.puspika on 26/09/20.
  */
 
-//MODULARIZED - 2.03 Create new module for provide Service
+//MODULARIZED - 2.04 Create new module for provide GithubService
 @Module
 class GithubServiceModule {
 

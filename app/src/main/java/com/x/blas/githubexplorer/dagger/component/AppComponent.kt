@@ -20,6 +20,7 @@ import dagger.android.AndroidInjector
 @ApplicationScope
 @Component(
     modules = [AndroidInjectionModule::class, ActivityBuilder::class, ViewModelModule::class, AppModule::class, GithubServiceModule::class],
+    //MODULARIZED - 2.08 add BaseComponent so retrofit can supplied to AppComponent
     dependencies = [BaseComponent::class]
 )
 interface AppComponent : AndroidInjector<AppApplication> {
@@ -28,6 +29,7 @@ interface AppComponent : AndroidInjector<AppApplication> {
     interface Builder {
         @BindsInstance
         fun applicationContext(application: Application): Builder
+        //MODULARIZED - 2.11 add BaseComponent in AppComponentBuilder
         fun baseComponent(baseComponent: BaseComponent): Builder
         fun build(): AppComponent
     }

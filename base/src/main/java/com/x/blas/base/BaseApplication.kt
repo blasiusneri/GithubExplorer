@@ -12,11 +12,13 @@ import com.x.blas.base.component.DaggerBaseComponent
 open class BaseApplication : MultiDexApplication() {
 
     companion object {
+        //MODULARIZED - 2.09 create base component attribute so child class (AppApplication.kt) can get the it
         lateinit var baseComponent: BaseComponent
     }
 
     override fun onCreate() {
         super.onCreate()
+        //MODULARIZED - 2.10 Declare baseComponent and inject it
         baseComponent = DaggerBaseComponent.builder().applicationContext(this).build()
         baseComponent.inject(this)
     }

@@ -47,7 +47,7 @@ dependencies {
     api "androidx.appcompat:appcompat:${rootProject.ext.androidx.appCompatVersion}"
     api "androidx.constraintlayout:constraintlayout:${rootProject.ext.androidx.constraintlayoutVersion}"
 
-    //MODULARIZED - 1.02 Move base dependencies used in base to base module
+    //MODULARIZED - 1.02 Move all dependencies used in base to base module
     api "com.google.dagger:dagger:${rootProject.ext.google.daggerVersion}"
     api "com.google.dagger:dagger-android:${rootProject.ext.google.daggerVersion}"
     api "com.google.dagger:dagger-android-support:${rootProject.ext.google.daggerVersion}"
