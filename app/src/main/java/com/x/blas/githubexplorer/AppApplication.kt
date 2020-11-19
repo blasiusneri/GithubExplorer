@@ -10,6 +10,7 @@ import javax.inject.Inject
 /**
  * Created by blasius.n.puspika on 26/09/20.
  */
+//MODULARIZED - 2.01.2 extend AppApplication to BaseApplication
 class AppApplication : BaseApplication(), HasAndroidInjector {
 
     @Inject

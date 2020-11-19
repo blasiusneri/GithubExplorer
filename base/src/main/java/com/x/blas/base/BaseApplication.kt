@@ -8,7 +8,7 @@ import com.x.blas.base.component.DaggerBaseComponent
  * Created by blasius.n.puspika on 17/11/20.
  */
 
-//MODULARIZED - 2.01 create base application and extend this to AppComponent
+//MODULARIZED - 2.01.1 create base application and extend this to AppComponent
 open class BaseApplication : MultiDexApplication() {
 
     companion object {
