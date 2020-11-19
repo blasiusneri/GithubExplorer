@@ -7,6 +7,7 @@ import javax.inject.Scope
  * Created by blasius.n.puspika on 17/11/20.
  */
 
+//MODULARIZED - 2.02.2 Create BaseScope
 @Scope
 @Documented
 @Retention(AnnotationRetention.RUNTIME)

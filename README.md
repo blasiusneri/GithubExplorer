@@ -47,8 +47,18 @@ Chapter 2 (Implementation)
 //MODULARIZED - 2.01 create base application and extend this to AppComponent
 open class BaseApplication : MultiDexApplication()
 
-//MODULARIZED - 2.02 Create BaseComponent
-interface BaseComponent : AndroidInjector<BaseApplication> {
+//MODULARIZED - 2.02.1 Create BaseComponent
+interface BaseComponent : AndroidInjector<BaseApplication>
+
+//MODULARIZED - 2.02.2 Create BaseScope
+@Scope
+@Documented
+@Retention(AnnotationRetention.RUNTIME)
+annotation class BaseScope
+
+//MODULARIZED - 2.02.3 change ApplicationScope to BaseScope in NetworkModule in all places
+
+//MODULARIZED - 2.02.4 add BaseScope in BaseComponent
 
 @Module
 //MODULARIZED - 2.03 Move NetworkModule to base but keep the GithubService Provider in app module, so create new GithubServiceModule.kt for GithubService Provider
@@ -64,6 +74,8 @@ class GithubServiceModule {
         return retrofit.create(GithubService::class.java)
     }
 }
+
+//MODULARIZED - 2.05 Create builder for BaseComponent
 
 //MODULARIZED - 2.06 set NetworkModule as module used in BaseComponent
 @Component(modules = [NetworkModule::class])

@@ -30,6 +30,7 @@ class NetworkModule {
         const val ACCESS_TOKEN = "d9b655ef677bffc1784f1ed132e28f036e67f2b8"
     }
 
+    //MODULARIZED - 2.02.3 change ApplicationScope to BaseScope in NetworkModule in all places
     @Provides
     @BaseScope
     fun providesSharedPreferences(application: Application): SharedPreferences {
