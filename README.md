@@ -22,7 +22,7 @@ Let's start to modularized the project:
 1. Right click on the project folder and create new module
 2. Select Android Library for new module
 3. Set :base as name for the module
-4. Invalid date and restart the IDE
+4. Invalidate and restart the IDE
 5. Base module will shown on the project tree
 
 
@@ -43,7 +43,7 @@ kapt ....
 //MODULARIZED - 1.04 add base module to app module
 implementation project(":base")
 
-Chapter 2 (Implementgitation)
+Chapter 2 (Implementation)
 //MODULARIZED - 2.01 create base application and extend this to AppComponent
 open class BaseApplication : MultiDexApplication()
 
@@ -106,6 +106,6 @@ interface Builder {
 }
 
 //MODULARIZED - 2.12 add baseComponent and passing baseComponent from parent class
-	val appApplication = DaggerAppComponent.builder().applicationContext(this).baseComponent(
-	    baseComponent
-	).build()
+val appApplication = DaggerAppComponent.builder().applicationContext(this).baseComponent(
+    baseComponent
+).build()
