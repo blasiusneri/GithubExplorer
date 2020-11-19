@@ -44,8 +44,10 @@ kapt ....
 implementation project(":base")
 
 Chapter 2 (Implementation)
-//MODULARIZED - 2.01 create base application and extend this to AppComponent
+//MODULARIZED - 2.01.1 create base application and extend this to AppComponent
 open class BaseApplication : MultiDexApplication()
+
+//MODULARIZED - 2.01.2 extend AppApplication to BaseApplication
 
 //MODULARIZED - 2.02.1 Create BaseComponent
 interface BaseComponent : AndroidInjector<BaseApplication>
