@@ -43,7 +43,7 @@ kapt ....
 //MODULARIZED - 1.04 add base module to app module
 implementation project(":base")
 
-Chapter 2 (Implementation)
+Chapter 2 (Implementgitation)
 //MODULARIZED - 2.01 create base application and extend this to AppComponent
 open class BaseApplication : MultiDexApplication()
 
@@ -61,36 +61,37 @@ annotation class BaseScope
 //MODULARIZED - 2.02.4 add BaseScope in BaseComponent
 
 //MODULARIZED - 2.03 Move NetworkModule to base but keep the GithubService Provider in app module, so create new GithubServiceModule.kt for GithubService Provider
-class NetworkModule {
+
+	class NetworkModule {
 
 
 //MODULARIZED - 2.04 Create new module for provide GithubService and put it in app module
-@Module
-class GithubServiceModule {
+	@Module
+	class GithubServiceModule {
 
-    @Provides
-    fun provideGithubService(retrofit: Retrofit): GithubService {
-        return retrofit.create(GithubService::class.java)
-    }
-}
+	    @Provides
+	    fun provideGithubService(retrofit: Retrofit): GithubService {
+		return retrofit.create(GithubService::class.java)
+	    }
+	}
 
 //MODULARIZED - 2.05 Create builder for BaseComponent
 
 //MODULARIZED - 2.06 set NetworkModule as module used in BaseComponent
-@Component(modules = [NetworkModule::class])
+	@Component(modules = [NetworkModule::class])
 
 //MODULARIZED - 2.07 Exposed Retrofit to be used in service in BaseComponent
-fun retrofit(): Retrofit
+	fun retrofit(): Retrofit
 
 //MODULARIZED - 2.08 add BaseComponent so retrofit can supplied to AppComponent
-dependencies = [BaseComponent::class]
+	dependencies = [BaseComponent::class]
 
 //MODULARIZED - 2.09 create base component attribute so child class (AppApplication.kt) can get the it as companion
-lateinit var baseComponent: BaseComponent
+	lateinit var baseComponent: BaseComponent
 
 //MODULARIZED - 2.10 Declare baseComponent and inject it
-baseComponent = DaggerBaseComponent.builder().applicationContext(this).build()
-baseComponent.inject(this)
+	baseComponent = DaggerBaseComponent.builder().applicationContext(this).build()
+	baseComponent.inject(this)
 
 
 //MODULARIZED - 2.11 add BaseComponent in AppComponentBuilder
@@ -105,6 +106,6 @@ interface Builder {
 }
 
 //MODULARIZED - 2.12 add baseComponent and passing baseComponent from parent class
-val appApplication = DaggerAppComponent.builder().applicationContext(this).baseComponent(
-    baseComponent
-).build()
+	val appApplication = DaggerAppComponent.builder().applicationContext(this).baseComponent(
+	    baseComponent
+	).build()
