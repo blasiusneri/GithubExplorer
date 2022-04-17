@@ -9,7 +9,8 @@ import javax.inject.Inject
 /**
  * Created by blasius.n.puspika on 08/11/20.
  */
-class GithubRepositoryImpl @Inject constructor(private val githubService: GithubService) : GithubRepository {
+class GithubRepositoryImpl @Inject constructor(private val githubService: GithubService) :
+    GithubRepository {
 
     override fun getSearchList(keyword: String): Observable<SearchList> {
         return githubService.getUserList(keyword)

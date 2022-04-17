@@ -1,0 +1,85 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+//MODULARIZED - 1.01 Add two below plugin
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api "androidx.core:core-ktx:${rootProject.ext.androidx.coreKtxVersion}"
+    api "androidx.appcompat:appcompat:${rootProject.ext.androidx.appCompatVersion}"
+    api "androidx.constraintlayout:constraintlayout:${rootProject.ext.androidx.constraintlayoutVersion}"
+
+    //MODULARIZED - 1.02 Move all dependencies used in base to base module
+    api "com.google.dagger:dagger:${rootProject.ext.google.daggerVersion}"
+    api "com.google.dagger:dagger-android:${rootProject.ext.google.daggerVersion}"
+    api "com.google.dagger:dagger-android-support:${rootProject.ext.google.daggerVersion}"
+    annotationProcessor "com.google.dagger:dagger-android-processor:${rootProject.ext.google.daggerVersion}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${rootProject.ext.google.daggerVersion}"
+    kapt "com.google.dagger:dagger-android-processor:${rootProject.ext.google.daggerVersion}"
+    kapt "com.google.dagger:dagger-compiler:${rootProject.ext.google.daggerVersion}"
+    api "javax.annotation:jsr250-api:${rootProject.ext.javax.jsr250Version}"
+    api "javax.inject:javax.inject:${rootProject.ext.javax.injectVersion}"
+
+    api "com.squareup.retrofit2:retrofit:${rootProject.ext.square.retrofitVersion}"
+    api "com.squareup.retrofit2:converter-gson:${rootProject.ext.square.retrofitVersion}"
+    api "com.squareup.retrofit2:adapter-rxjava2:${rootProject.ext.square.retrofitVersion}"
+
+    api "com.google.code.gson:gson:${rootProject.ext.google.gsonVersion}"
+
+    api "com.android.support:multidex:${rootProject.ext.androidx.multidexSupportVersion}"
+
+    api "io.reactivex.rxjava2:rxjava:${rootProject.ext.reactivex.rxjava2Version}"
+    api "io.reactivex.rxjava2:rxandroid:${rootProject.ext.reactivex.rxandroid2Version}"
+
+    api "androidx.lifecycle:lifecycle-livedata-ktx:${rootProject.ext.androidx.lifecycleVersion}"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:${rootProject.ext.androidx.lifecycleVersion}"
+    api "androidx.lifecycle:lifecycle-extensions:${rootProject.ext.androidx.lifecycleVersion}"
+    api "androidx.lifecycle:lifecycle-common-java8:${rootProject.ext.androidx.lifecycleVersion}"
+    kapt "androidx.lifecycle:lifecycle-compiler:${rootProject.ext.androidx.lifecycleVersion}"
+    api "androidx.fragment:fragment-ktx:${rootProject.ext.androidx.fragmentKtxVersion}"
+
+    api "androidx.recyclerview:recyclerview:${rootProject.ext.androidx.recyclerviewVersion}"
+    api "androidx.recyclerview:recyclerview-selection:${rootProject.ext.androidx.recyclerviewSelectionVersion}"
+    api "androidx.cardview:cardview:${rootProject.ext.androidx.cardviewVersion}"
+
+    api "com.github.bumptech.glide:glide:${rootProject.ext.bumptech.glideVersion}"
+    kapt "com.github.bumptech.glide:compiler:${rootProject.ext.bumptech.glideVersion}"
+}
